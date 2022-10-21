@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "docs:dev": "pnpm --filter=docs docs:dev",
     "preinstall": "node ./scripts/preinstall.js"
   },
   "keywords": [],
