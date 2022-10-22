@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yield 语法糖</title>
+  </head>
+  <body>
+    <script>
+      // 使用 yield 语法糖
+      class Person {
+        constructor(name, age, friends) {
+          this.name = name
+          this.age = age
+          this.friends = friends
+        }
+
+        *[Symbol.iterator]() {
+          yield* this.friends
+        }
+      }
+
+      const person = new Person('grit', 18, ['jack', 'rose', 'tom'])
+      const pIterator = person[Symbol.iterator]()
+      console.log(pIterator.next())
+      console.log(pIterator.next())
+      console.log(pIterator.next())
+
+      // for (const friend of person) {
+      //   console.log(friend)
+      // }
+
+      // { value: 'jack', done: false }
+      // { value: 'rose', done: false }
+      // { value: 'tom', done: false }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生成器函数的参数和返回值</title>
+  </head>
+  <body>
+    <script>
+      // 生成器函数的返回值，是通过调用其迭代器对象的 `next()`方法，遇到一个`yield`语句时，返回的对象的 `value` 属性的值。
+      // 当在生成器函数中显式 `return` 时，会导致生成器立即变成完成状态，即调用`next()`方法返回的对象的 done 属性为 true。如果`return`后面跟了一个值，那么这个值会作为当前调用`next()`方法返回的 value 值。
+      function* foo() {
+        console.log('函数内部: 1111')
+        console.log('函数内部: 2222')
+        yield 'ok'
+        console.log('函数内部: 3333')
+        console.log('函数内部: 4444')
+        return 'again ok'
+        console.log('函数内部: 5555')
+        console.log('函数内部: 6666')
+        return '函数内部: 7777'
+      }
+
+      const generator = foo()
+      console.log(generator.next())
+      console.log(generator.next())
+      console.log(generator.next())
+
+      // 生成器函数的参数，是在调用其迭代器对象的`next()`方法传入的，通过 `yield` 语句左边的变量接收。需要注意的是，如果需要给第一个 `yield` 语句之前的代码传参，就需要将参数传给生成器函数，而不是迭代器对象的 `next()` 方法。
+      // function* foo(first) {
+      //   console.log('函数内部: 1111', first)
+      //   console.log('函数内部: 2222', first)
+      //   const second = yield 'ok'
+
+      //   console.log('函数内部: 3333', second)
+      //   console.log('函数内部: 4444', second)
+      //   const third = yield 'again ok'
+      //   console.log('函数内部: 5555', third)
+      //   console.log('函数内部: 6666', third)
+      //   return '函数内部: 7777'
+      // }
+
+      // const generator = foo('first arg')
+
+      // generator.next()
+      // generator.next('second arg')
+      // generator.next('third arg')
+    </script>
+  </body>
+</html>

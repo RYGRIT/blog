@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>return和throw方法</title>
+  </head>
+  <body>
+    <script>
+      function* foo() {
+        console.log('1111')
+        const res = yield
+        console.log('2222', res)
+        yield
+        console.log('3333')
+        return undefined
+      }
+      const generator = foo()
+      // 以上函数需要调用三次`next()`方法才能结束
+      console.log(generator.next())
+      console.log(generator.next())
+      console.log(generator.next())
+
+      // 如何在调用一次`next()`方法就结束呢？
+      // 通过`return()`方法
+      // `return()`方法也可以传入一个参数，作为`yield`表达式的返回值
+      // console.log(generator.next())
+      // console.log(generator.return('return'))
+
+      // `throw()`方法可以抛出一个错误，然后在`yield`表达式处捕获
+      // console.log(generator.next())
+      // console.log(generator.throw('throw'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生成器代替迭代器</title>
+  </head>
+  <body>
+    <script>
+      // 不采用生成器的原始方式
+      function createIterator1(arr) {
+        let index = 0
+        const iterator = {
+          next: function () {
+            if (index < arr.length) {
+              return { value: arr[index++], done: false }
+            } else {
+              return { done: true }
+            }
+          }
+        }
+
+        return iterator
+      }
+
+      // 采用生成器的方式
+      function* createIterator2(arr) {
+        for (let i = 0; i < arr.length; i++) {
+          yield arr[i]
+        }
+      }
+
+      const numIterator1 = createIterator1([1, 2, 3])
+      console.log(numIterator1.next())
+      console.log(numIterator1.next())
+      console.log(numIterator1.next())
+      console.log(numIterator1.next())
+
+      const numIterator2 = createIterator2([1, 2, 3])
+      console.log(numIterator2.next())
+      console.log(numIterator2.next())
+      console.log(numIterator2.next())
+      console.log(numIterator2.next())
+
+      // 给一个自定义类添加迭代器，不采用生成器的原始方式
+      class Person1 {
+        constructor(name, age, friends) {
+          this.name = name
+          this.age = age
+          this.friends = friends
+        }
+
+        [Symbol.iterator]() {
+          let index = 0
+          const iterator = {
+            next: () => {
+              if (index < this.friends.length) {
+                return { value: this.friends[index++], done: false }
+              } else {
+                return { done: true }
+              }
+            }
+          }
+          return iterator
+        }
+      }
+
+      // 采用生成器的方式
+      class Person2 {
+        constructor(name, age, friends) {
+          this.name = name
+          this.age = age
+          this.friends = friends
+        }
+
+        *[Symbol.iterator]() {
+          for (let i = 0; i < this.friends.length; i++) {
+            yield this.friends[i]
+          }
+        }
+      }
+      const p1 = new Person1('grit', 18, ['james', 'kobe', 'wade', 'curry'])
+      const p1Iterator = p1[Symbol.iterator]()
+
+      console.log(p1Iterator.next())
+      console.log(p1Iterator.next())
+      console.log(p1Iterator.next())
+      console.log(p1Iterator.next())
+
+      const p2 = new Person2('grit', 18, ['james', 'kobe', 'wade', 'curry'])
+      const p2Iterator = p2[Symbol.iterator]()
+      console.log(p2Iterator.next())
+      console.log(p2Iterator.next())
+      console.log(p2Iterator.next())
+      console.log(p2Iterator.next())
+    </script>
+  </body>
+</html>
