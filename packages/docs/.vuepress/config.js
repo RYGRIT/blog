@@ -8,6 +8,7 @@ module.exports = {
     }
   },
   themeConfig: {
+    type: 'blog',
     subSidebar: 'auto',
     nav: [
       { text: '首页', link: '/' },
@@ -35,23 +36,35 @@ module.exports = {
         ]
       }
     ],
-    sidebar: [
+    sidebar: {
+      '/fe/js/': [
+        {
+          title: '基础学习',
+          collapsable: false,
+          children: [
+            { title: '数据类型', path: '/fe/js/DataTypes' },
+            { title: 'DOM', path: '/fe/js/DOM' },
+            { title: 'BOM', path: '/fe/js/BOM' }
+          ]
+        },
+        {
+          title: '进阶学习',
+          collapsable: false,
+          children: [
+            { title: 'this', path: '/fe/js/This' },
+            { title: '迭代器', path: '/fe/js/Iterator' },
+            { title: '生成器', path: '/fe/js/Generator' }
+          ]
+        }
+      ]
+    }
+  },
+  plugins: [
+    [
+      'vuepress-plugin-container',
       {
-        title: '欢迎学习',
-        collapsable: false,
-        path: '/',
-        children: [{ title: '学前必读', path: '/' }]
-      },
-      {
-        title: '基础学习',
-        collapsable: false,
-        path: '/frontend/javascript/DataTypes',
-        children: [
-          { title: '数据类型', path: '/frontend/javascript/DataTypes' },
-          { title: 'DOM', path: '/frontend/javascript/DOM' },
-          { title: 'BOM', path: '/frontend/javascript/BOM' }
-        ]
+        type: 'tip',
       }
     ]
-  }
+  ]
 }

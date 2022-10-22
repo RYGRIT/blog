@@ -1,5 +1,5 @@
 ---
-title: 学前必读
-author: RYGrit
-date: '2022-10-21'
+home: true
+heroImage: /hero.png
+heroText: null
 ---

@@ -5,9 +5,11 @@ importers:
   packages/docs:
     specifiers:
       vuepress: ^1.9.7
+      vuepress-plugin-container: ^2.1.5
       vuepress-theme-reco: ^1.6.16
     devDependencies:
       vuepress: 1.9.7
+      vuepress-plugin-container: 2.1.5
       vuepress-theme-reco: 1.6.16_vuepress@1.9.7
 
 packages:
