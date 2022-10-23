@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>异步函数的写法</title>
+  </head>
+  <body>
+    <script>
+      // 回顾：前面学到的一些函数写法
+      // 普通函数
+      // function foo() {}
+      // const bar = function() {}
+      // 箭头函数
+      // const baz = () => {}
+
+      // 生成器函数
+      // function* gen() {}
+
+      // 异步函数
+      // 异步函数是使用`async`关键字声明的函数。
+      // 特点：
+      // 在函数内部可以使用`await`关键字
+      // 返回值是一个`Promise`对象
+      // async function foo() {}
+      // 异步函数的写法
+      // async function foo() {}
+      // const bar = async function() {}
+      // const baz = async () => {}
+      class Person {
+        // async关键字可以放在方法名之前
+        async sayHi() {
+          console.log(`Hi, I am ${this.name}`)
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -13,21 +13,35 @@ module.exports = {
     nav: [
       { text: '首页', link: '/' },
       {
-        text: '前端',
+        text: 'Javascript',
         items: [
           {
-            text: 'JavaScript',
+            text: '基础学习',
             items: [
-              { text: 'Basic', link: '/frontend/javascript/basic.html' },
-              { text: 'Advance', link: '/frontend/javascript/advance.html' }
+              { text: '数据类型', link: '/fe/js/DataTypes' },
+              { text: 'DOM', link: '/fe/js/DOM' },
+              { text: 'BOM', link: '/fe/js/BOM' }
             ]
           },
-          { text: 'TypeScript', link: '/frontend/typescript' },
-          { text: 'Vue', link: '/frontend/vue' },
-          { text: 'React', link: '/frontend/react' }
+          {
+            text: '进阶学习',
+            items: [
+              { text: 'this', link: '/fe/js/this' },
+              { text: '迭代器', link: '/fe/js/Iterator' },
+              { text: '生成器', link: '/fe/js/Generator/' },
+              { text: 'Promise', link: '/fe/js/Promise/' },
+              { text: '异步编程', link: '/fe/js/async-await/' }
+            ]
+          }
         ]
       },
-      { text: '杂文', link: '/other/' },
+      {
+        text: 'TypeScript',
+        items: [{ text: '基础学习' }, { text: '进阶学习' }]
+      },
+      { text: 'Vue', items: [{ text: '基础学习' }, { text: '进阶学习' }] },
+      { text: 'React', items: [{ text: '基础学习' }, { text: '进阶学习' }] },
+      { text: 'Others', link: '/other/' },
       {
         text: "RYGrit's 博客整理",
         items: [
@@ -53,7 +67,8 @@ module.exports = {
           children: [
             { title: 'this', path: '/fe/js/This' },
             { title: '迭代器', path: '/fe/js/Iterator' },
-            { title: '生成器', path: '/fe/js/Generator' }
+            { title: '生成器', path: '/fe/js/Generator' },
+            { title: '异步编程', path: '/fe/js/async-await' }
           ]
         }
       ]
@@ -63,7 +78,7 @@ module.exports = {
     [
       'vuepress-plugin-container',
       {
-        type: 'tip',
+        type: 'tip'
       }
     ]
   ]

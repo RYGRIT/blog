@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>await 关键字</title>
+  </head>
+  <body>
+    <script>
+      // function requestData(name) {
+      //   return new Promise((resolve, reject) => {
+      //     setTimeout(() => {
+      //       resolve(`请求到的数据是：${name}`)
+      //     }, 3000)
+      //   })
+      // }
+
+      // // 1.如果 Promise 正常处理，await 会返回 Promise 的结果
+      // async function foo() {
+      //   const data = await requestData('grit')
+      //   console.log(data)
+      // }
+
+      // foo() // 3秒后输出：请求到的数据是：grit
+
+      // function requestData(name) {
+      //   return new Promise((resolve, reject) => {
+      //     setTimeout(() => {
+      //       reject('请求失败')
+      //     }, 3000)
+      //   })
+      // }
+
+      // // 2.如果 Promise 处理失败，await 会抛出异常
+      // async function foo() {
+      //   const data = await requestData('grit')
+      //   console.log(data)
+      // }
+
+      // foo() // 3秒后，Uncaught (in promise) 请求失败
+
+      // 3. await 普通值，await 会把值转换为已正常处理的 Promise，然后返回其结果
+      async function foo() {
+        const data = await 'grit'
+        console.log(data)
+      }
+
+      foo() // grit
+    </script>
+  </body>
+</html>
